@@ -1,0 +1,10 @@
+
+[Web_servers]
+web1       ansible_host=158.160.45.226
+web2       ansible_host=62.84.112.233
+[Ha]
+loadb1     ansible_host=51.250.1.126
+loadb2     ansible_host=51.250.78.235
+[Load_balancers]
+loadb1     ansible_host=51.250.1.126   state1=MASTER   priority1=255   state2=BACKUP   priority2=100
+loadb2     ansible_host=51.250.78.235   state1=BACKUP   priority1=100   state2=MASTER   priority2=255

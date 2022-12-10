@@ -1,0 +1,20 @@
+---
+- name: Install Nginx
+  hosts: Web_servers
+  become: yes
+  roles:
+    - nginx 
+
+
+- name: Install Haproxy
+  hosts: Ha
+  become: yes
+  roles:
+    - Ha
+
+
+- name: Install Keepalived
+  hosts: Load_balancers
+  become: yes
+  roles:
+    - keepalived

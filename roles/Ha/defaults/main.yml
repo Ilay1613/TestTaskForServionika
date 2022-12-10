@@ -1,0 +1,3 @@
+---
+# defaults file for Ha
+destin_haproxy_conf: /etc/haproxy

@@ -1,0 +1,4 @@
+---
+# defaults file for nginx
+destin_html_folder: /var/www/html
+destin_nginx_conf: /etc/nginx/sites-available/default

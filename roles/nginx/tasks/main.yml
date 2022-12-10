@@ -1,0 +1,28 @@
+---
+# tasks file for nginx
+- name: Install nginx
+  apt: name=nginx state=latest
+
+
+- name: Generate index.html file
+  template: src=index.html dest={{ destin_html_folder }} mode=0555  
+  notify: Restart nginx
+
+
+- name: Remove default html file  
+  file:
+   path: /var/www/html/index.nginx-debian.html
+   state: absent
+
+
+- name: Copy conf file for Web servers
+  copy: src={{ item }} dest={{ destin_nginx_conf }} mode=0555
+  loop:
+    - "default"
+  notify:
+    - Restart nginx
+
+
+- name: Start nginx and enable
+  service: name=nginx state=started enabled=yes
+

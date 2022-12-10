@@ -1,0 +1,16 @@
+---
+# tasks file for Ha
+-  name: Install haproxy
+   apt: name=haproxy state=latest
+
+
+-  name: copy conf file for loadbalancers
+   copy: src={{ item }} dest={{ destin_haproxy_conf }} mode=0555
+   loop:
+     - "haproxy.cfg"
+   notify:
+     - Restart Ha
+
+
+- name: Start haproxy and enable
+  service: name=haproxy state=started enabled=yes

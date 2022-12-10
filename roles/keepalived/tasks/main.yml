@@ -1,0 +1,13 @@
+---
+# tasks file for keepalived
+- name: Install keepalived
+  apt: name=keepalived state=latest
+
+
+- name: Generate keepalived.conf file
+  template: src=keepalived.conf dest={{ destin_ka_folder }} mode=0555
+  notify: Restart keepalived
+
+
+- name: Start keepalived and enable
+  service: name=keepalived state=started enabled=yes
